@@ -1,14 +1,26 @@
 import { View, Text, Button } from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../navigation/RootNavigator";
+import { StyleSheet } from "react-native";
+import global from "./styles"
 
-type Props = NativeStackScreenProps<RootStackParamList, "Profile">;
-
-export default function ProfileScreen({ navigation }: Props) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Profile Screen</Text>
-      <Button title="Go Back" onPress={() => navigation.goBack()} />
+  export default function ProfileScreen() {
+    return (
+    <View style={global.profilebackground}>
+      <Text></Text>
+      <View>
+        <Text style={styles.pagename}>Profile</Text>
+      </View>
+      
     </View>
   );
 }
+const styles=StyleSheet.create({
+    
+
+ pagename:{
+   fontSize: 50,
+   textAlign: "center",
+   marginTop: 300,
+ }
+})
+
+

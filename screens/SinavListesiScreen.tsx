@@ -1,19 +1,21 @@
-import { View, Text, Button, TouchableOpacity } from "react-native";
+import { View, Text, Button, TouchableOpacity,StyleSheet } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../navigation/RootNavigator";
+import { RootStackParamList } from "../navigators/RootNavigator";
 import React from "react";
-import { StyleSheet } from "react-native";
+
+
 
 type Props = NativeStackScreenProps<RootStackParamList, "SinavListesi">;
 
-export default function SinavListesiScreen({ navigation }: Props) {
-  return (
+// export default function SinavListesiScreen({ navigation }: Props) {
+  export default function SinavListesiScreen({ navigation }: Props) {
+    return (
     <View>
       <View style={styles.examlist}>
       <Text style={{fontSize:40,}}>Sınav Listesi</Text>
       </View>
       <View style={styles.examlistbackground}>
-      <TouchableOpacity style={styles.buttonExam} onPress={() => navigation.navigate("Profile")}>
+      <TouchableOpacity style={styles.buttonExam} onPress={() => navigation.navigate("ExamName")}>
          <View> 
           <Text style={{fontSize:50,alignItems:"center"}}>+</Text>
         </View>
@@ -32,7 +34,7 @@ const styles=StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
-    marginTop: 500,
+    marginTop: 300,
     marginLeft:220,
     
      
@@ -44,7 +46,7 @@ examlistbackground:{
     marginRight: 20,
     marginLeft: 20,
     borderRadius: 30,
-    height: 650,
+    height: 500,
 },
   examlist:{
     alignItems: "center",
