@@ -3,14 +3,17 @@ import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { RootStackParamList } from "../navigators/RootNavigator";
 import { useState } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
+import global from "./styles"
+import BackButton from "../components/BackButton";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type Props = BottomTabScreenProps<RootStackParamList, "ExamName">;
 
-export default function ProfileScreen({ navigation }: Props) {
+export default function ExamNameScreen({ navigation }: Props) {
   const [examName, setExamName] = useState("");
 
   return (
+    <SafeAreaView>
     <View style={styles.container}>
       <Text style={styles.label}>Sınav ismini girin</Text>
       
@@ -20,15 +23,16 @@ export default function ProfileScreen({ navigation }: Props) {
         value={examName}
         onChangeText={setExamName}
       />
-
-      <TouchableOpacity style={styles.buttonone} onPress={() => navigation.goBack()}>
-      <Ionicons name="arrow-back" size={30} color="black" />
-      </TouchableOpacity>
+    <BackButton navigation={navigation}/>
     </View>
+    </SafeAreaView>
     
   );
 }
 const styles=StyleSheet.create({
+  container:{
+
+  },
   examName:{
     alignItems: "center",
     justifyContent: "center",
@@ -54,14 +58,4 @@ input: {
   borderTopRightRadius:50,
   fontSize: 25,
 },
-buttonone:{
-  width: 120,
-  height: 50,
-  backgroundColor: "white",
-  borderRadius: 30,
-  alignItems: "center",
-  justifyContent: "center",
-  position: "absolute",
-  marginTop: "10%",
-  marginLeft:"3%",
-}});
+});
