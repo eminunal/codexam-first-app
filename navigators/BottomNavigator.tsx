@@ -1,5 +1,5 @@
 import ExamListScreen from "../screens/ExamListScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+import SettingScreen from "../screens/SettingScreen";
 import HomeScreen from "../screens/HomeScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,7 +15,7 @@ export default function BottomNavigator() {
         let iconName;   
         if (route.name === 'ExamList') {
           iconName = 'book';
-        } else if (route.name === 'Profile') {
+        } else if (route.name === 'Setting') {
           iconName = 'person-outline';
         }else if (route.name === 'Home') {
           iconName = 'home';
@@ -27,7 +27,7 @@ export default function BottomNavigator() {
       
       <Tab.Screen  name="ExamList" component={ExamListScreen} options={{ title: "Sınav Listesi" }}  />
       <Tab.Screen  name="Home" component={HomeScreen} options={{ title: "Ana Sayfa" }}  />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Setting" component={SettingScreen} />
       
       </Tab.Navigator>
   );

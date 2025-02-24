@@ -1,75 +1,53 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
-import global from "./styles";
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import BackButton from '../components/BackButton';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
-export default function ProfileScreen() {
+const SettingScreen = ({ navigation }) => {
+  const settingsOptions = [
+    { id: 'account', label: 'Account' },  
+    { id: 'notifications', label: 'Notifications' },
+    { id: 'appearance', label: 'Appearance' },
+    { id: 'privacy', label: 'Privacy' },
+  ];
+
   return (
-    <View>
-      <Text>asdds</Text>
-    </View>
-  ); 
-}
+    <SafeAreaView style={{flex:1,backgroundColor:"#1e1e2e"}}>
+      <View style={styles.header}> 
+        <BackButton navigation={navigation} />
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.header}>Settings</Text>
+        {settingsOptions.map((item) => (
+        <TouchableOpacity
+          key={item.id}
+          onPress={() => navigation.navigate(item.label)} // Sayfaya yönlendirme
+          style={styles.button}
+          activeOpacity={0.7} // Tıklanma efekti
+        >
+          <Text style={styles.buttonText}>{item.label}</Text>
+        </TouchableOpacity>
+        ))}
+      </View>
+    </SafeAreaView>
+  );
+};
 
-const styles=StyleSheet.create({
-  header:{  
-    flex: 2,
-    backgroundColor: "orange",
+const styles = StyleSheet.create({
+  container: {  flex: 1 },
+  header: { color:"#cdd6f4",fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
+  button: {
+    backgroundColor: '#cdd6f4',
+    padding: 16,
+    borderRadius: 8,
+    marginBottom: 12,
   },
-  body:{
-    flex:5,
-    backgroundColor: "red",
-  },
-  title:{
-    fontSize: 36,
-    color: "#cdd6f4", // Açık renkli yazı
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: "15%",
-  },
-  text:{
-    fontSize: 38,
-    color: "#cdd6f4", // Açık renkli yazı
-    textAlign: "center",
-    marginTop: "5%",
-    marginHorizontal: "5%",
-    alignSelf: "flex-start",
-  },
-  icon:{
-    color: "#cdd6f4", // Açık renkli yazı
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: "15%",
-  },
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    color: "#cdd6f4",
-  },
-  inputContainer: {
-    marginTop: 30,
-    paddingHorizontal: 20,
-  },
-  emailLabel: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 2,
-    color: "#cdd6f4",
-  },
-  passwordLabel: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 2,
-    color: "#cdd6f4",
-  }
-})
+  buttonText: {color:"#1e1e2e", fontSize: 20 ,fontWeight:"bold"}
+});
 
+export default SettingScreen;
 
-
-
-
+  
 
 
 
